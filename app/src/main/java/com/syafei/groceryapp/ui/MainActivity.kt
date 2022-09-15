@@ -1,7 +1,8 @@
-package com.syafei.groceryapp
+package com.syafei.groceryapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.syafei.groceryapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
