@@ -11,7 +11,7 @@ data class GroceryItems(
     var itemName: String,
 
     @ColumnInfo(name = "itemQuantity")
-    var itemQuantity: String,
+    var itemQuantity: Int,
 
     @ColumnInfo(name = "itemPrice")
     var itemPrice: Int

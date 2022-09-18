@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/grocery_item.xml" value="0.33" />
       </map>
     </option>
   </component>
