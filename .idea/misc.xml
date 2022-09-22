@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/drawable/custom_btn_back.xml" value="0.1775" />
         <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/grocery_add_dialog.xml" value="0.25" />
         <entry key="..\:/Project latihan/GroceryApp/app/src/main/res/layout/grocery_item.xml" value="0.33" />
       </map>
     </option>
