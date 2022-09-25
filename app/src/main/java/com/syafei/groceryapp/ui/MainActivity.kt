@@ -2,17 +2,15 @@ package com.syafei.groceryapp.ui
 
 import android.app.Dialog
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.syafei.groceryapp.R
 import com.syafei.groceryapp.data.local.GroceryDataBase
 import com.syafei.groceryapp.data.local.GroceryItems
 import com.syafei.groceryapp.data.repository.GroceryRepository
 import com.syafei.groceryapp.databinding.ActivityMainBinding
+import com.syafei.groceryapp.databinding.GroceryAddDialogBinding
 
 class MainActivity : AppCompatActivity(), GroceryAdapter.GroceryItemClick {
 
@@ -50,29 +48,31 @@ class MainActivity : AppCompatActivity(), GroceryAdapter.GroceryItemClick {
 
     private fun openDilog() {
         val dialog = Dialog(this)
-        dialog.setContentView(R.layout.grocery_add_dialog)
-        val cancelBtn = dialog.findViewById<Button>(R.id.btnCencel)
-        val addBtn = dialog.findViewById<Button>(R.id.btnAdd)
-        val itemEt = dialog.findViewById<EditText>(R.id.idTvItemName)
-        val itemPriceET = dialog.findViewById<EditText>(R.id.idEtitemPrice)
-        val itemQUantity = dialog.findViewById<EditText>(R.id.idEtitemQuantity)
 
-        cancelBtn.setOnClickListener {
+        val dialogBinding = GroceryAddDialogBinding.inflate(layoutInflater)
+        dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.btnCencel.setOnClickListener {
             dialog.dismiss()
         }
-        addBtn.setOnClickListener {
-            val itemName: String = itemEt.text.toString()
-            val itemPrice: String = itemPriceET.text.toString()
-            val itemQuantity: String = itemQUantity.text.toString()
+        dialogBinding.btnAdd.setOnClickListener {
+            val itemName: String = dialogBinding.idEtitemName.text.toString()
+            val itemPrice: String = dialogBinding.idEtitemPrice.text.toString()
+            val itemQuantity: String = dialogBinding.idEtitemQuantity.text.toString()
             val itPrice: Int = itemPrice.toInt()
             val itQuanty: Int = itemQuantity.toInt()
-            if (itemName.isNotEmpty() && itemPrice.isNotEmpty() && itemQuantity.isNotEmpty()) {
-                val items = GroceryItems(itemName, itPrice, itQuanty)
+            if (itemName.trim().isNotEmpty() && itemPrice.trim().isNotEmpty() && itemQuantity.trim()
+                    .isNotEmpty()
+            ) {
+                val items = GroceryItems(itemName, itQuanty, itPrice)
                 groceryViewModel.insert(items)
-                Toast.makeText(applicationContext, "data inserted", Toast.LENGTH_SHORT).show()
                 groceryAdapter.notifyDataSetChanged()
+                Toast.makeText(applicationContext, "data inserted", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             } else {
+                dialogBinding.idEtitemName.error = "field with name item"
+                dialogBinding.idEtitemQuantity.error = "fill the item quantity"
+                dialogBinding.idEtitemPrice.error = "fill the price item"
                 Toast.makeText(applicationContext, "please enter valid - valid", Toast.LENGTH_SHORT)
                     .show()
             }

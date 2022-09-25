@@ -21,7 +21,6 @@ class GroceryAdapter(var list: List<GroceryItems>, val groceryItemClick: Grocery
         val tvName = itemView.findViewById<TextView>(R.id.idTvItemName)
         val tvQuantity = itemView.findViewById<TextView>(R.id.idTvQuantity)
         val tvRate = itemView.findViewById<TextView>(R.id.idTvRate)
-        val tvHeading = itemView.findViewById<TextView>(R.id.idTVHeading)
         val tvAmount = itemView.findViewById<TextView>(R.id.idTVTotalAmnt)
 
         val ivDelete = itemView.findViewById<ImageView>(R.id.idIVDelete)
@@ -38,7 +37,7 @@ class GroceryAdapter(var list: List<GroceryItems>, val groceryItemClick: Grocery
         holder.tvQuantity.text = list[position].itemQuantity.toString()
         holder.tvRate.text = "RP. " + list[position].itemPrice.toString()
 
-        val itemTotal: Int = list[position].itemPrice * list[position].itemQuantity
+        val itemTotal: Int = list[position].itemQuantity * list[position].itemPrice
 
         holder.tvAmount.text = "Rp." + itemTotal.toString()
 
