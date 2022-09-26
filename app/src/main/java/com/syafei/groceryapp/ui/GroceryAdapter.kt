@@ -45,6 +45,7 @@ class GroceryAdapter(var list: List<GroceryItems>, val groceryItemClick: Grocery
             groceryItemClick.onItemClicked(list[position])
         }
 
+
     }
 
     override fun getItemCount(): Int = list.size

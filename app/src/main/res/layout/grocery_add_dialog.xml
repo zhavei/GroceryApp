@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:hint="enter item Quantity"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="14sp" />
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:hint="enter item price"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="14sp" />

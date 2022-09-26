@@ -16,6 +16,7 @@ class GroceryViewModel(private val repository: GroceryRepository) : ViewModel() 
         repository.delete(item)
     }
 
+
     //harusnya tipe datanya cuma GroceryItems
     fun getAllGroceryItem(items: List<GroceryItems>) = repository.getAllItems()
 

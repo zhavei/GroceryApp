@@ -57,24 +57,48 @@ class MainActivity : AppCompatActivity(), GroceryAdapter.GroceryItemClick {
         }
         dialogBinding.btnAdd.setOnClickListener {
             val itemName: String = dialogBinding.idEtitemName.text.toString()
-            val itemPrice: String = dialogBinding.idEtitemPrice.text.toString()
-            val itemQuantity: String = dialogBinding.idEtitemQuantity.text.toString()
-            val itPrice: Int = itemPrice.toInt()
-            val itQuanty: Int = itemQuantity.toInt()
-            if (itemName.trim().isNotEmpty() && itemPrice.trim().isNotEmpty() && itemQuantity.trim()
-                    .isNotEmpty()
-            ) {
-                val items = GroceryItems(itemName, itQuanty, itPrice)
-                groceryViewModel.insert(items)
-                groceryAdapter.notifyDataSetChanged()
-                Toast.makeText(applicationContext, "data inserted", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-            } else {
-                dialogBinding.idEtitemName.error = "field with name item"
-                dialogBinding.idEtitemQuantity.error = "fill the item quantity"
-                dialogBinding.idEtitemPrice.error = "fill the price item"
-                Toast.makeText(applicationContext, "please enter valid - valid", Toast.LENGTH_SHORT)
-                    .show()
+            val itemPrice: String = dialogBinding.idEtitemPrice.text.toString().trim()
+            val itemQuantity: String = dialogBinding.idEtitemQuantity.text.toString().trim()
+            /*val itPrice: Int = itemPrice.toInt()
+            val itQuanty: Int = itemQuantity.toInt()*/
+            /* if (itemName.isNotEmpty() && itemPrice.trim().isNotEmpty() && itemQuantity.trim()
+                     .isNotEmpty()
+             ) {
+                 val items = GroceryItems(itemName, itQuanty, itPrice)
+                 groceryViewModel.insert(items)
+                 groceryAdapter.notifyDataSetChanged()
+                 Toast.makeText(applicationContext, "data inserted", Toast.LENGTH_SHORT).show()
+                 dialog.dismiss()
+             } else {
+                 dialogBinding.idEtitemName.error = "field with name item"
+                 dialogBinding.idEtitemQuantity.error = "fill the item quantity"
+                 dialogBinding.idEtitemPrice.error = "fill the price item"
+                 Toast.makeText(applicationContext, "please enter valid - valid", Toast.LENGTH_SHORT)
+                     .show()
+             }*/
+            dialogBinding.run {
+                var isEmptyField = false
+                if (itemName.isEmpty()) {
+                    isEmptyField = true
+                    dialogBinding.idEtitemName.error = "field with name item"
+                } else if (itemQuantity.isEmpty()) {
+                    isEmptyField = true
+                    dialogBinding.idEtitemQuantity.error = "fill the item quantity"
+                } else if (itemPrice.isEmpty()) {
+                    isEmptyField = true
+                    dialogBinding.idEtitemPrice.error = "fill the price item"
+                } else {
+                    if (!isEmptyField) {
+                        val itPrice: Int = itemPrice.toInt()
+                        val itQuanty: Int = itemQuantity.toInt()
+                        val items = GroceryItems(itemName, itQuanty, itPrice)
+                        groceryViewModel.insert(items)
+                        groceryAdapter.notifyDataSetChanged()
+                        Toast.makeText(applicationContext, "data inserted", Toast.LENGTH_SHORT)
+                            .show()
+                        dialog.dismiss()
+                    }
+                }
             }
         }
         dialog.show()
